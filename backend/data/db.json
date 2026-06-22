@@ -1,4 +1,26 @@
 {
-  "events": [],
-  "registrations": []
+  "events": [
+    {
+      "id": "evt_1782141592043_g6y216",
+      "title": "React Summit",
+      "date": "2026-07-10",
+      "time": "10:00",
+      "venue": "Main Hall",
+      "capacity": 100,
+      "category": "Technology",
+      "description": "A practical event for React developers.",
+      "status": "published",
+      "createdAt": "2026-06-22T15:19:52.043Z"
+    }
+  ],
+  "registrations": [
+    {
+      "id": "reg_1782141592070_honqfg",
+      "eventId": "evt_1782141592043_g6y216",
+      "name": "Demo User",
+      "email": "demo@example.com",
+      "phone": "9999999999",
+      "registeredAt": "2026-06-22T15:19:52.070Z"
+    }
+  ]
 }
