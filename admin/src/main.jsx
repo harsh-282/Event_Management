@@ -3,7 +3,13 @@ import { createRoot } from "react-dom/client";
 import { CalendarPlus, ClipboardList, Trash2 } from "lucide-react";
 import "./styles.css";
 
-const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
+function getApiUrl() {
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+  const cleanUrl = backendUrl.replace(/\/$/, "");
+  return cleanUrl.endsWith("/api") ? cleanUrl : `${cleanUrl}/api`;
+}
+
+const API_URL = getApiUrl();
 const blankEvent = {
   title: "",
   category: "",
