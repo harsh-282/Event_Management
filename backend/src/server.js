@@ -10,6 +10,19 @@ const mongoUrl = process.env.MONGODB_URL;
 app.use(cors());
 app.use(express.json());
 
+app.get("/", (_req, res) => {
+  res.json({
+    ok: true,
+    service: "event-management-backend",
+    health: "/api/health",
+    events: "/api/events"
+  });
+});
+
+app.get("/.well-known/appspecific/com.chrome.devtools.json", (_req, res) => {
+  res.status(204).end();
+});
+
 if (!mongoUrl) {
   console.error("MONGODB_URL is missing. Add it to backend/.env");
   process.exit(1);
