@@ -246,14 +246,22 @@ app.use((error, _req, res, _next) => {
   res.status(500).json({ message: "Server error" });
 });
 
-mongoose
-  .connect(mongoUrl, { serverSelectionTimeoutMS: 10000 })
-  .then(() => {
-    app.listen(port, () => {
-      console.log(`Event Management API running on http://localhost:${port}`);
+if (process.env.NODE_ENV !== "production") {
+  mongoose
+    .connect(mongoUrl, { serverSelectionTimeoutMS: 10000 })
+    .then(() => {
+      app.listen(port, () => {
+        console.log(`Event Management API running on http://localhost:${port}`);
+      });
+    })
+    .catch((error) => {
+      console.error("MongoDB connection failed", error.message);
+      process.exit(1);
     });
-  })
-  .catch((error) => {
-    console.error("MongoDB connection failed", error.message);
-    process.exit(1);
-  });
+} else {
+  mongoose
+    .connect(mongoUrl, { serverSelectionTimeoutMS: 10000 })
+    .catch((error) => console.error("MongoDB connection failed", error.message));
+}
+
+export default app;
