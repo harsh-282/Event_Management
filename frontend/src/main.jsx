@@ -4,7 +4,7 @@ import { CalendarDays, Clock, MapPin, Ticket } from "lucide-react";
 import "./styles.css";
 
 function getApiUrl() {
-  const backendUrl = import.meta.env.VITE_BACKEND_URL || "http://localhost:5000";
+  const backendUrl = import.meta.env.VITE_BACKEND_URL || "https://event-management-kcl1.vercel.app";
   const cleanUrl = backendUrl.replace(/\/$/, "");
   return cleanUrl.endsWith("/api") ? cleanUrl : `${cleanUrl}/api`;
 }
